@@ -19,6 +19,7 @@ class Personal extends Migration
             $table->string('first_name');
             $table->string('nameFather');
             $table->string('position');
+            $table->int('position_value');
             $table->string('first_day_on_work');
             $table->string('salary');
         });
@@ -31,6 +32,6 @@ class Personal extends Migration
      */
     public function down()
     {
-        //
+         Schema::dropIfExists('personal');//
     }
 }
