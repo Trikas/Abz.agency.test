@@ -13,37 +13,31 @@ class TablePersonal extends Seeder
      */
     public function run(genName $gen)
     {
-    	for($x=0; $x<=50000; $x++){
+
+    	DB::table('personal')->insert([
+						'last_name'=>$gen->lastName(),
+						'first_name'=>$gen->firstName(),
+						'nameFather'=>$gen->fatherName(),
+						'position'=>'Президент компании',
+						'position_value'=>10,
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
+						'salary'=>rand(100000, 200000)//добавление президента компании
+						]);
+    	DB::table('personal')->insert([
+						'last_name'=>$gen->lastName(),
+						'first_name'=>$gen->firstName(),
+						'nameFather'=>$gen->fatherName(),
+						'position'=>'Генеральный директор',
+						'position_value'=>9,
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
+						'salary'=>rand(50000, 100000)//добавление ген директора
+						]);
+
+    	for($x=0; $x<=100; $x++){
 		
 			$position = $gen->getPosition();
 			
 			switch ($position) {
-				case 'Президент компании':
-					if (count(DB::table('personal')->where('position_value', 10)->get())==0){
-					DB::table('personal')->insert([
-						'last_name'=>$gen->lastName(),
-						'first_name'=>$gen->firstName(),
-						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
-						'position_value'=>10,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
-						'salary'=>rand(100000, 200000)//добавление президента компании
-						]);
-			    }
-					break;
-				case 'Генеральный директор':
-					if (count(DB::table('personal')->where('position_value', 9)->get())==0){
-		    		DB::table('personal')->insert([
-						'last_name'=>$gen->lastName(),
-						'first_name'=>$gen->firstName(),
-						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
-						'position_value'=>9,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
-						'salary'=>rand(50000, 100000)//добавление ген директора
-						]);
-		    		}	
-					break;
 				case 'Директор филиала':
 				if (count(DB::table('personal')->where('position_value', 8)->get())<=count(DB::table('personal')->where('position_value', 7)->get())){
 		    		DB::table('personal')->insert([
@@ -52,7 +46,7 @@ class TablePersonal extends Seeder
 						'nameFather'=>$gen->fatherName(),
 						'position'=>$position,
 						'position_value'=>8,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
 						'salary'=>rand(40000, 90000)//добавление директора филиала
 						]);
 		    		}
@@ -67,7 +61,7 @@ class TablePersonal extends Seeder
 						'nameFather'=>$gen->fatherName(),
 						'position'=>$position,
 						'position_value'=>7,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
 						'salary'=>rand(30000, 80000)//добавление зам директора филиала
 						]);
 		    		}
@@ -82,7 +76,7 @@ class TablePersonal extends Seeder
 						'nameFather'=>$gen->fatherName(),
 						'position'=>$position,
 						'position_value'=>6,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
 						'salary'=>rand(20000, 70000)//управляющий персоналом
 						]);
 		    		}
@@ -95,7 +89,7 @@ class TablePersonal extends Seeder
 						'nameFather'=>$gen->fatherName(),
 						'position'=>$position,
 						'position_value'=>5,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, time())),
+						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
 						'salary'=>rand(10000, 30000)//управляющий персоналом
 						]);
 		    		
@@ -108,6 +102,6 @@ class TablePersonal extends Seeder
 		 	
 
 		}
-    }//
+    }
     
 }

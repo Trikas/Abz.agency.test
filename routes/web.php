@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'Test@test');
+Route::get('/', 'Test@tests');
