@@ -8,7 +8,7 @@
 	                    <th  style="cursor:pointer;" onclick="sort('last_name')">Фамилия<i class="{{$last_name}}" aria-hidden="true" id="last_name"  style="cursor:pointer;"></i></th>
 	                    <th  style="cursor:pointer;" onclick="sort('first_name')" >Имя<i class="{{$first_name}}" aria-hidden="true" id="first_name"  style="cursor:pointer;"></i></th>
 	                    <th  style="cursor:pointer;" onclick="sort('nameFather')">Отчество<i class="{{$nameFather}}" aria-hidden="true" id="nameFather"  style="cursor:pointer;"></i></th>
-	                    <th  style="cursor:pointer;"  onclick="sort('position_value')">Должность<i class="{{$position}}" aria-hidden="true" id="position_value"  style="cursor:pointer;"></i></th>
+	                    <th  style="cursor:pointer;"  onclick="sort('position_value')">Должность<i class="{{$position_value}}" aria-hidden="true" id="position_value"  style="cursor:pointer;"></i></th>
 	                    <th  style="cursor:pointer;" onclick="sort('first_day')">Дата приема на работу<i class="{{$first_day}}" aria-hidden="true" id="first_day"  style="cursor:pointer;"></i></th>
 	                    <th style="cursor:pointer;"  onclick="sort('salary')">Зароботная плата<i class="{{$salary}}" aria-hidden="true" id="salary"  style="cursor:pointer;"></i></th> 
 

@@ -44,7 +44,7 @@ class SortData extends Controller
     			'last_name'=>session('last_name'),
     			'first_name'=>session('first_name'), 
     			'nameFather'=>session('nameFather'), 
-    			'position'=>session('position'), 
+    			'position_value'=>session('position_value'), 
     			'first_day'=>session('first_day'),
     			'salary'=>session('salary')
     		]);
@@ -59,7 +59,7 @@ class SortData extends Controller
 			session(['last_name' =>'fas fa-sort-alpha-down']); 
 			session(['first_name'=>'fas fa-sort-alpha-down']);
 			session(['nameFather'=>'fas fa-sort-alpha-down']);
-			session(['position'=>'fas fa-sort-alpha-down']);
+			session(['position_value'=>'fas fa-sort-alpha-down']);
 			session(['first_day'=>'fas fa-sort-numeric-down']);
 			session(['salary'=>'fas fa-sort-numeric-down']);	
 
@@ -69,6 +69,7 @@ class SortData extends Controller
 	
 
    			session([$who_sort=>$how_sort]);
+
 		
 }
    			
