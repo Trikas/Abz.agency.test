@@ -11,4 +11,12 @@
 |
 */
 
-Route::get('/', 'Test@tests');
+Route::get('/', 'IndexPage@show');
+Route::get('admin','AdminPanel@show')->name('admin')->middleware('auth');
+Route::get('all_pers', 'TablePersonal@show')->name('all_personal');
+Route::get('sort', 'SortData@Sort');
+Route::get('search', 'SearchData@search');
+Route::get('convSort', 'ConvIconSort@convIcon');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -13,95 +13,104 @@ class TablePersonal extends Seeder
      */
     public function run(genName $gen)
     {
-
     	DB::table('personal')->insert([
 						'last_name'=>$gen->lastName(),
 						'first_name'=>$gen->firstName(),
 						'nameFather'=>$gen->fatherName(),
 						'position'=>'Президент компании',
-						'position_value'=>10,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(100000, 200000)//добавление президента компании
+						'position_value'=>5,
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$'.rand(100000, 200000)//добавление президента компании
 						]);
     	DB::table('personal')->insert([
 						'last_name'=>$gen->lastName(),
 						'first_name'=>$gen->firstName(),
 						'nameFather'=>$gen->fatherName(),
 						'position'=>'Генеральный директор',
-						'position_value'=>9,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(50000, 100000)//добавление ген директора
-						]);
-
-    	for($x=0; $x<=100; $x++){
-		
-			$position = $gen->getPosition();
-			
-			switch ($position) {
-				case 'Директор филиала':
-				if (count(DB::table('personal')->where('position_value', 8)->get())<=count(DB::table('personal')->where('position_value', 7)->get())){
-		    		DB::table('personal')->insert([
-						'last_name'=>$gen->lastName(),
-						'first_name'=>$gen->firstName(),
-						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
-						'position_value'=>8,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(40000, 90000)//добавление директора филиала
-						]);
-		    		}
-		    		break;
-		    	case 'Зам директора филиала':
-		    	$countMidBoss = count(DB::table('personal')->where('position_value', 7)->get());
-		    	$countBossPersonal = count(DB::table('personal')->where('position_value', 6)->get());
-				if ($countMidBoss<=$countBossPersonal){
-		    		DB::table('personal')->insert([
-						'last_name'=>$gen->lastName(),
-						'first_name'=>$gen->firstName(),
-						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
-						'position_value'=>7,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(30000, 80000)//добавление зам директора филиала
-						]);
-		    		}
-		    		break;
-		    	case 'Управляющий персоналом':
-		    	$countBossPersonal= count(DB::table('personal')->where('position_value', 6)->get());
-		    	$countPers = count(DB::table('personal')->where('position_value', 5)->get());
-				if ($countBossPersonal<=$countPers){
-		    		DB::table('personal')->insert([
-						'last_name'=>$gen->lastName(),
-						'first_name'=>$gen->firstName(),
-						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
 						'position_value'=>6,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(20000, 70000)//управляющий персоналом
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$'.rand(50000, 100000)//добавление ген директора
 						]);
-		    		}
-		    		break;
-		    	case 'Рабочий': 
-		    	$countPers = count(DB::table('personal')->where('position_value', 5)->get());
-		    		DB::table('personal')->insert([
+    		for($i=0; $i<=50; $i++){
+    		$x = rand(1, 4);
+    		echo $x;
+    		switch ($x) {
+    			case '1':
+    			if(count(DB::table('personal')->where('position_value', 7)->get())<=20000){
+    				DB::table('personal')->insert([
 						'last_name'=>$gen->lastName(),
 						'first_name'=>$gen->firstName(),
 						'nameFather'=>$gen->fatherName(),
-						'position'=>$position,
-						'position_value'=>5,
-						'first_day_on_work'=>date('j|m|Y', rand(296545881, 788929201)),
-						'salary'=>rand(10000, 30000)//управляющий персоналом
+						'position'=>'Директор филиала',
+						'position_value'=>7,
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$50000',//добавление директора филиала
 						]);
-		    		
-		    		break;
+    			}
+    		
+    			
+    			case '2':
+    			if(count(DB::table('personal')->where('position_value', 8)->get())<=20000){ 
+    				DB::table('personal')->insert([
+						'last_name'=>$gen->lastName(),
+						'first_name'=>$gen->firstName(),
+						'nameFather'=>$gen->fatherName(),
+						'position'=>'Зам директора филиала',
+						'position_value'=>8,
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$20000'//добавление зам директора филиала
+					]);
+				
+    			}
+    			case '3':
+    			if(count(DB::table('personal')->where('position_value', 9)->get())<=20000){  
+    			DB::table('personal')->insert([
+						'last_name'=>$gen->lastName(),
+						'first_name'=>$gen->firstName(),
+						'nameFather'=>$gen->fatherName(),
+						'position'=>'Управляющий персоналом',
+						'position_value'=>9,
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$10000'//управляющий персоналом
+									]);
+    		}
+    			
+    			case 4:
+    			if(count(DB::table('personal')->where('position_value', 10)->get())<=20000){   	
+    			DB::table('personal')->insert([
+						'last_name'=>$gen->lastName(),
+						'first_name'=>$gen->firstName(),
+						'nameFather'=>$gen->fatherName(),
+						'position'=>'Рабочий',
+						'position_value'=>10,
+						'first_day_on_work'=>date('Y|m|j', rand(296545881, 788929201)),
+						'salary'=>'$4500'//управляющий персоналом
+						]);
+    		}
 
-				default:
-					echo "error";
-					break;
-			}
-		 	
+    			
+    	}
+    			
+    		
+			var_dump(count(DB::table('personal')->where('position_value', 8)->get()));
+			var_dump(count(DB::table('personal')->where('position_value', 7)->get()));
+			var_dump(count(DB::table('personal')->where('position_value', 6)->get()));
+			var_dump(count(DB::table('personal')->where('position_value', 5)->get()));
 
-		}
+
+    		}
+
+
+    	}
     }
-    
-}
+
+    			
+
+
+	
+
+    	
+    		
+
+
+
